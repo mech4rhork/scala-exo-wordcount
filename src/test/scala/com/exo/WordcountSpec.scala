@@ -9,22 +9,14 @@ class WordcountSpec extends AnyFlatSpec with Matchers {
 
     // GIVEN
     val inputTextLines: String = List(
-      "one two, one two.",
-      "just three.",
-      "one mic check."
+      // TODO
     ).mkString
 
     // WHEN
-    val actualRes = Wordcount.doWordcount(inputTextLines)
-    val expectedRes: Map[String, Int] = Map(
-      "one" -> 3,
-      "two" -> 2,
-      "three" -> 1,
-      "mic" -> 1,
-      "check" -> 1,
-      "just" -> 1
-    )
+    val actualRes = // TODO
+    val expectedRes: Map[String, Int] = // TODO
 
-    actualRes shouldBe expectedRes
+    // THEN
+    // TODO
   }
 }

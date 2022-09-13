@@ -1,9 +1,9 @@
 package com.exo
 
-import java.io.{BufferedWriter, File, FileNotFoundException, FileWriter, OutputStreamWriter}
+import java.io.{BufferedWriter, File, FileNotFoundException, FileWriter}
 import scala.collection.immutable.ListMap
 import scala.io.Source
-import scala.util.{Failure, Random, Success, Try, Using}
+import scala.util._
 
 object Wordcount {
 
@@ -18,7 +18,7 @@ object Wordcount {
       dataWarehouseFolder,
       booksFolder,
       countFolder
-    ).foreach { folder =>
+    ) foreach { folder =>
       Try(new File(folder).mkdirs) match {
         case Success(_) =>
         case Failure(t) =>
@@ -56,18 +56,8 @@ object Wordcount {
    */
   def doWordcount(text: String): Map[String, Int] = {
     println(s"INFO: Doing the counting...")
-    val wordAndOneTuples: Array[(String, Int)] = text.split("\\.").flatMap { sentence =>
-      sentence
-        .replaceAll("""[\p{Punct}&&[^.]]""", "") // Removing punctuation
-        .trim
-        .split(" ") // Splitting sentence into words
-        .map(word => (word, 1))
-    }
-    val wordAndOneTuples_groupedByWord: Map[String, Array[(String, Int)]] = wordAndOneTuples.groupBy(x => x._1)
-    val wordcount: Map[String, Int] = wordAndOneTuples_groupedByWord.view.mapValues(wordAndOneTuplesArray =>
-      wordAndOneTuplesArray.map(_._2).sum
-    ).toMap
-    wordcount
+    // TODO
+    // useful methods: flatMap, map, split, groupBy, mapValues
   }
 
   def loadDownloadedBook(bookId: Int): List[String] = {
